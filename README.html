@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivFrame | Ingeniería & Consultoría Estructural</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            background: #ffffff;
+            max-width: 650px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-top: 6px solid #0284c7;
+            text-align: center;
+        }
+        .logo-placeholder {
+            margin-bottom: 20px;
+        }
+        .logo-placeholder img {
+            max-width: 160px;
+            height: auto;
+        }
+        h1 {
+            color: #0f172a;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        .tagline {
+            color: #0284c7;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        p {
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+        }
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .badge {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #0284c7;
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0369a1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- Reemplaza "logo.png" por el nombre de la imagen de tu logo cuando la subas a GitHub -->
+        <div class="logo-placeholder">
+            <img src="logo.png" alt="Logo CivFrame" onerror="this.style.display='none'">
+        </div>
+
+        <h1>CivFrame</h1>
+        <div class="tagline">Soluciones Integrales en Ingeniería Civil & Estructuras</div>
+
+        <p>Estamos construyendo nuestra nueva plataforma digital. Brindamos servicios especializados en análisis estructural, modelado BIM y consultoría técnica de proyectos.</p>
+
+        <div class="services">
+            <span class="badge">Diseño Estructural</span>
+            <span class="badge">Modelado BIM</span>
+            <span class="badge">Consultoría Técnica</span>
+        </div>
+
+        <a href="mailto:contacto@civframe.com" class="btn">Contáctanos</a>
+    </div>
+
+</body>
+</html>
