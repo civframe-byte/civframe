@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CivFrame | Ingeniería Estructural & Consultoría Técnica</title>
 <meta name="description" content="CivFrame: diseño estructural, modelado BIM, evaluación de vulnerabilidad sísmica y consultoría técnica de ingeniería civil.">
+<link rel="icon" type="image/svg+xml" href="assets/icono.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -12,15 +13,17 @@
   :root{
     --bg:#EDEEE8;
     --panel:#FFFFFF;
-    --ink:#10233F;
+    --ink:#0E2C49;
     --ink-soft:#48566C;
     --ink-faint:#7C879A;
     --accent:#C1502E;
     --accent-dark:#9B3E22;
-    --steel:#2C6E7F;
-    --steel-light:#E4EFEF;
-    --line:rgba(16,35,63,0.14);
-    --line-strong:rgba(16,35,63,0.28);
+    --steel:#2C5E88;
+    --steel-light:#E7EEF5;
+    --logo-mid:#5B8CB4;
+    --logo-line:#9FBBD6;
+    --line:rgba(14,44,73,0.14);
+    --line-strong:rgba(14,44,73,0.28);
     --paper:#F6F5F0;
     --radius:10px;
     --maxw:1120px;
@@ -80,14 +83,15 @@
   }
   .brand{
     display:flex;
-    align-items:baseline;
-    gap:8px;
+    align-items:center;
+    gap:10px;
     font-family:'Space Grotesk', sans-serif;
     font-weight:700;
     font-size:1.35rem;
     text-decoration:none;
     color:var(--ink);
   }
+  .brand-icon{width:32px;height:32px;flex:none;}
   .brand span{
     font-family:'IBM Plex Mono', monospace;
     font-weight:400;
@@ -159,9 +163,20 @@
     mask-image:radial-gradient(ellipse 90% 80% at 50% 30%, black 40%, transparent 90%);
   }
   .hero .wrap{position:relative;z-index:2;}
+  .hero-watermark{
+    position:absolute;
+    right:-40px;
+    top:50%;
+    transform:translateY(-50%);
+    width:340px;
+    opacity:0.14;
+    z-index:1;
+    pointer-events:none;
+  }
+  @media (max-width:900px){.hero-watermark{display:none;}}
   .hero-inner{max-width:680px;}
-  .hero .eyebrow{color:#9FD3D9;}
-  .hero .eyebrow::before{background:#9FD3D9;}
+  .hero .eyebrow{color:var(--logo-line);}
+  .hero .eyebrow::before{background:var(--logo-line);}
   .hero h1{
     font-size:clamp(2.4rem, 5vw, 3.6rem);
     color:#fff;
@@ -400,6 +415,111 @@
     line-height:1.9;
   }
 
+  /* ---------- Proyectos ---------- */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:20px;
+  }
+  .project-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .project-art{
+    position:relative;
+    aspect-ratio:5/3;
+    background:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .project-art svg{
+    width:78%;height:78%;
+    fill:none;
+    stroke:var(--logo-line);
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  .project-badge{
+    position:absolute;
+    top:12px;right:12px;
+    background:var(--accent);
+    color:#fff;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.06em;
+    padding:4px 10px;
+    border-radius:20px;
+  }
+  .project-body{padding:18px 20px 22px;}
+  .project-tag{color:var(--steel);font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;}
+  .project-body h3{font-size:1.05rem;margin:8px 0 4px;}
+  .project-body p{color:var(--ink-soft);font-size:0.9rem;margin:0;}
+
+  /* ---------- Ubicación ---------- */
+  .map-frame{
+    width:100%;
+    aspect-ratio:16/6;
+    border-radius:var(--radius);
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+  @media (max-width:760px){.map-frame{aspect-ratio:4/3;}}
+
+  /* ---------- Redes sociales ---------- */
+  .social-row{display:flex;gap:12px;margin-top:20px;}
+  .social-row a{
+    width:36px;height:36px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.3);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;
+    transition:background .2s ease, border-color .2s ease;
+  }
+  .social-row a:hover{background:var(--accent);border-color:var(--accent);}
+  .social-row svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.6;}
+  footer .social-row a{border-color:var(--line-strong);color:var(--ink-soft);}
+  footer .social-row a:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+  /* ---------- Formulario de contacto ---------- */
+  .contact-form{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:40px 44px;
+    margin-top:24px;
+  }
+  .form-head{margin-bottom:22px;}
+  .form-head h3{font-size:1.3rem;}
+  .form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-bottom:18px;
+  }
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+  .form-grid .field{margin-bottom:0;}
+  .field label{font-size:0.85rem;font-weight:600;color:var(--ink-soft);}
+  .field input, .field textarea{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.95rem;
+    padding:12px 14px;
+    border:1px solid var(--line-strong);
+    border-radius:6px;
+    background:var(--bg);
+    color:var(--ink);
+    resize:vertical;
+  }
+  .field input:focus, .field textarea:focus{
+    outline:2px solid var(--accent);
+    outline-offset:1px;
+  }
+  @media (max-width:640px){
+    .form-grid{grid-template-columns:1fr;}
+    .contact-form{padding:28px 22px;}
+  }
+
   /* ---------- Footer ---------- */
   footer{padding:44px 0 32px;border-top:1px solid var(--line);}
   .footer-row{
@@ -444,12 +564,13 @@
 
 <header>
   <div class="wrap nav">
-    <a href="#top" class="brand">CivFrame <span>ING. CIVIL</span></a>
+    <a href="#top" class="brand"><img src="assets/icono.svg" alt="" class="brand-icon">CivFrame <span>ING. CIVIL</span></a>
     <nav class="links" id="navLinks">
       <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
       <a href="#proceso">Proceso</a>
-      <a href="#nosotros">Por qué elegirnos</a>
       <a href="#faq">Preguntas</a>
+      <a href="#ubicacion">Ubicación</a>
       <a href="#contacto" class="nav-cta">Cotizar proyecto</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
@@ -460,6 +581,7 @@
 
 <section class="hero" id="top">
   <div class="wrap">
+    <img src="assets/icono.svg" alt="" class="hero-watermark">
     <div class="hero-inner">
       <div class="eyebrow">Ingeniería civil · Ecuador</div>
       <h1>CivFrame</h1>
@@ -640,7 +762,57 @@
   </div>
 </section>
 
-<section id="proceso" class="why">
+<section id="proyectos" class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Trabajos de referencia</div>
+      <h2>Proyectos</h2>
+      <p>Ejemplos del tipo de proyectos que desarrollamos. Reemplaza estas fichas con tus propios proyectos cuando los tengas documentados.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <article class="project-card">
+        <div class="project-art">
+          <svg viewBox="0 0 200 120"><rect x="30" y="30" width="140" height="80" fill="none"/><line x1="30" y1="50" x2="170" y2="50"/><line x1="30" y1="70" x2="170" y2="70"/><line x1="30" y1="90" x2="170" y2="90"/><line x1="60" y1="30" x2="60" y2="110"/><line x1="100" y1="30" x2="100" y2="110"/><line x1="140" y1="30" x2="140" y2="110"/><path d="M30 30l20-14h100l20 14"/></svg>
+          <span class="project-badge">Ejemplo</span>
+        </div>
+        <div class="project-body">
+          <span class="mono project-tag">Diseño estructural</span>
+          <h3>Edificio institucional</h3>
+          <p>Quito, Ecuador</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-art">
+          <svg viewBox="0 0 200 120"><path d="M10 95h180M20 95V70l30-20 30 20v25M80 95V70l30-20 30 20v25M140 95V70l30-20 20 12v33"/><line x1="10" y1="105" x2="190" y2="105"/></svg>
+          <span class="project-badge">Ejemplo</span>
+        </div>
+        <div class="project-body">
+          <span class="mono project-tag">Puentes</span>
+          <h3>Puente vehicular</h3>
+          <p>Napo, Ecuador</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-art">
+          <svg viewBox="0 0 200 120"><rect x="50" y="20" width="40" height="80" rx="4"/><line x1="50" y1="40" x2="90" y2="40"/><line x1="50" y1="60" x2="90" y2="60"/><line x1="50" y1="80" x2="90" y2="80"/><path d="M90 60h60M150 60v30h-30"/><circle cx="150" cy="95" r="8"/></svg>
+          <span class="project-badge">Ejemplo</span>
+        </div>
+        <div class="project-body">
+          <span class="mono project-tag">Hidráulica y sanitaria</span>
+          <h3>Planta de tratamiento</h3>
+          <p>Ibarra, Ecuador</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Cómo trabajamos</div>
@@ -688,7 +860,7 @@
   </div>
 </section>
 
-<section id="nosotros">
+<section id="nosotros" class="why">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Por qué elegirnos</div>
@@ -715,7 +887,7 @@
   </div>
 </section>
 
-<section id="faq" class="why">
+<section id="faq">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Preguntas frecuentes</div>
@@ -746,11 +918,29 @@
   </div>
 </section>
 
+<section id="ubicacion" class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">¿Dónde estamos?</div>
+      <h2>Ubicación</h2>
+      <p>Visítanos con cita previa o coordina una reunión virtual, lo que te resulte más fácil.</p>
+    </div>
+    <div class="map-frame">
+      <!-- Reemplaza la URL del mapa: en Google Maps, busca tu dirección, "Compartir" > "Insertar un mapa" > copia solo el enlace del src -->
+      <iframe
+        src="https://www.google.com/maps?q=Quito,Ecuador&output=embed"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" title="Ubicación de CivFrame">
+      </iframe>
+    </div>
+  </div>
+</section>
+
 <section id="contacto">
   <div class="wrap">
     <div class="contact">
       <div>
-        <div class="eyebrow" style="color:#9FD3D9;">¿Listo para empezar?</div>
+        <div class="eyebrow" style="color:var(--logo-line);">¿Listo para empezar?</div>
         <h2>Cuéntanos tu proyecto</h2>
         <p>Escríbenos con el alcance, ubicación y planos si los tienes. Te respondemos con una propuesta técnica clara.</p>
         <div class="contact-info">
@@ -759,19 +949,67 @@
           +593 00 000 0000<br>
           Quito, Ecuador
         </div>
+        <div class="social-row">
+          <!-- Reemplaza los enlaces # por tus perfiles reales -->
+          <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="7.5" y1="10" x2="7.5" y2="17"/><circle cx="7.5" cy="6.7" r="0.4"/><path d="M11.5 17v-4.2c0-1.6 1-2.6 2.4-2.6s2.1 1 2.1 2.6V17"/><line x1="11.5" y1="10" x2="11.5" y2="17"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14 8.5h-1.5c-1 0-1.5.6-1.5 1.6V11h3l-.4 3h-2.6v6"/></svg>
+          </a>
+        </div>
       </div>
       <div class="contact-actions">
         <a class="btn btn-primary" href="https://wa.me/593900000000?text=Hola%2C%20me%20interesa%20cotizar%20un%20proyecto" target="_blank" rel="noopener">WhatsApp</a>
         <a class="btn btn-ghost" href="mailto:contacto@civframe.com">Enviar correo</a>
       </div>
     </div>
+
+    <!-- Formulario sin backend: usa FormSubmit.co, gratuito y compatible con GitHub Pages.
+         1) Reemplaza TU-CORREO@dominio.com por tu correo real.
+         2) La primera vez que alguien envíe el formulario, FormSubmit te pedirá confirmar tu correo por email: acepta ese enlace una sola vez y quedará activo. -->
+    <form class="contact-form" action="https://formsubmit.co/TU-CORREO@dominio.com" method="POST">
+      <input type="hidden" name="_subject" value="Nueva solicitud desde CivFrame.com">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none">
+      <div class="form-head">
+        <div class="eyebrow">O escríbenos aquí</div>
+        <h3>Envíanos los detalles de tu proyecto</h3>
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="f-nombre">Nombre</label>
+          <input id="f-nombre" type="text" name="Nombre" required placeholder="Tu nombre completo">
+        </div>
+        <div class="field">
+          <label for="f-contacto">Correo o teléfono</label>
+          <input id="f-contacto" type="text" name="Contacto" required placeholder="correo@ejemplo.com">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-mensaje">Cuéntanos tu proyecto</label>
+        <textarea id="f-mensaje" name="Mensaje" rows="4" required placeholder="Tipo de proyecto, ubicación y alcance aproximado"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+    </form>
   </div>
 </section>
 
 <footer>
   <div class="wrap footer-row">
-    <a href="#top" class="brand">CivFrame</a>
+    <a href="#top" class="brand"><img src="assets/icono.svg" alt="CivFrame" class="brand-icon">CivFrame</a>
     <span>Ingeniería estructural & consultoría técnica — Ecuador</span>
+    <div class="social-row">
+      <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+      </a>
+      <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="7.5" y1="10" x2="7.5" y2="17"/><circle cx="7.5" cy="6.7" r="0.4"/><path d="M11.5 17v-4.2c0-1.6 1-2.6 2.4-2.6s2.1 1 2.1 2.6V17"/><line x1="11.5" y1="10" x2="11.5" y2="17"/></svg>
+      </a>
+    </div>
     <span class="mono">© 2026 CivFrame</span>
   </div>
 </footer>
